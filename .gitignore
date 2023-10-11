@@ -1,4 +1,8 @@
 .idea/
-.venv/
+.venv
 __pycache__
 Navin/NavinProject/travello/__pycache__/
+venv
+.idea
+main.py
+db.sqlite3
