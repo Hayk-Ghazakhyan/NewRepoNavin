@@ -35,7 +35,15 @@
 									<ul class="d-flex flex-row align-items-start justify-content-start">
 										<li class="active"><a href="index.html">Home</a></li>
 										<li><a href="contact.html">Contact</a></li>
+										
+										{%if user.is_authenticated%}
+										<li>Hello, {{user.first_name}}</li>
+										<li><a href="accounts/logout">Logout</a></li>
+										{% else %}
+
 										<li><a href="accounts/register">Register</a></li>
+										<li><a href="accounts/login">Login</a></li>
+										{% endif %}
 									</ul>
 								</nav>
 								<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
@@ -278,10 +286,10 @@
 					<div class="col">
 						<div class="destinations_container item_grid">
 
-							{% for dest in dests %}
+							
 							<!-- Destination -->
 
-
+							{% for dest in dests %}
 							<div class="destination item">
 								<div class="destination_image">
 									<img src="{{dest.img.url}}" alt="">
@@ -292,8 +300,16 @@
 
 								</div>
 								<div class="destination_content">
-									<div class="destination_title"><a href="destinations.html">{{dest.name}}</a>
+
+									{%if user.is_authenticated%}
+									<div class="destination_title"><a href= "accounts/destination/{{dest.id}}">{{dest.name}}</a>
 									</div>
+									{% else %}
+									<div class="destination_title"><a href= "accounts/login">{{dest.name}}</a>
+									</div>
+									{% endif %}
+									
+									
 									<div class="destination_subtitle">
 										<p>{{dest.desc}}</p>
 									</div>
