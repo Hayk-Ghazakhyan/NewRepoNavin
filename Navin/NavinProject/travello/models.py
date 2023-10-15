@@ -9,4 +9,8 @@ class Destination(models.Model):
     img = models.ImageField(upload_to='pics')
     desc = models.TextField()
     offer = models.BooleanField(default=False)
+    info_dest = models.TextField()
 
+    def __str__(self) -> str:
+        return self.name
+    
