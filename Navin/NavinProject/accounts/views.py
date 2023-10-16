@@ -28,7 +28,7 @@ def register(request):
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name = first_name, last_name = last_name)
                 user.save()
                 subject = 'New Contact Form Submission'
-                message = f'Name: {user.first_name}\nEmail: {user.email}\nMessage: {user.username}'
+                message = f'Name: {user.first_name}\nEmail: {user.email}\nUsername: {user.username}'
                 from_email = 'haykghazakhyan@gmail.com'  # Use the same email as in your settings
                 recipient_list = [f"{user.email}", "haykghazakhyan@gmail.com"]  # Your email address
 
