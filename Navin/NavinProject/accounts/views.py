@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from travello.models import Destination
-
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -27,6 +27,13 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name = first_name, last_name = last_name)
                 user.save()
+                subject = 'New Contact Form Submission'
+                message = f'Name: {user.first_name}\nEmail: {user.email}\nMessage: {user.username}'
+                from_email = 'haykghazakhyan@gmail.com'  # Use the same email as in your settings
+                recipient_list = [f"{user.email}", "haykghazakhyan@gmail.com"]  # Your email address
+
+                send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+
                 messages.info(request, "User created")
                 return redirect('login')
         else:
