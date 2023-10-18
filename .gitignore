@@ -6,3 +6,4 @@ venv
 .idea
 main.py
 db.sqlite3
+.env
